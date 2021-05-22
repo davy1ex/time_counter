@@ -9,17 +9,17 @@ end Div_27Mhz_to_1Hz;
 architecture div_behavior of Div_27Mhz_to_1Hz is
 	begin
 		process(clk)
-			variable cnt : integer range 0 to 27000000;
+			variable cnt : integer range 0 to 10000000;
 			begin
 				if (clk'event and clk = '1') then
 
-					if(cnt >= 13500000) then
+					if(cnt >= cnt/2) then
 						clk_out <= '1';
 					else
 						clk_out <= '0';
 					end if;
 
-					if(cnt = 27000000) then
+					if(cnt = cnt) then
 						cnt := 0;
 					else
 						cnt := cnt + 1;
@@ -28,30 +28,3 @@ architecture div_behavior of Div_27Mhz_to_1Hz is
 				end if;
 		end process;
 end div_behavior;
-
--- library IEEE;
--- use IEEE.STD_LOGIC_1164.ALL;
--- use IEEE.STD_LOGIC_ARITH.ALL;
--- use IEEE.STD_LOGIC_UNSIGNED.ALL;
--- entity rcounter is
-
--- 	Port ( 
--- 		Clk : in std_logic;
--- 		-- updown : in std_logic;
--- 		reset : in std_logic;
--- 		clk_out : out std_logic
--- 	);
--- end rcounter;
-
--- architecture Behavioral of rcounter is
--- begin
--- 	process (Clk,reset)
--- 	begin
--- 		if reset='1' then
--- 			clk_out <= (others => '0');
--- 	 	elsif Clk='1' and Clk'event then
--- 	 		clk_out <= clk_out + 1;
--- 	 	end if;
-	 	
--- 	end process;
--- end Behavioral;
